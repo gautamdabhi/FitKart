@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".SplashActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_app_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textAppTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="FitKart"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_40"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/margin_8"
+            app:layout_constraintBottom_toTopOf="@+id/textAppSlogan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageLogo"
+            app:layout_constraintTop_toTopOf="@+id/imageLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textAppSlogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_2"
+            android:maxLines="1"
+            android:text="Gym Equipments"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_16"
+            app:layout_constraintBottom_toBottomOf="@+id/imageLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="36"
+            app:layout_constraintStart_toEndOf="@+id/imageLogo"
+            app:layout_constraintTop_toBottomOf="@+id/textAppTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
