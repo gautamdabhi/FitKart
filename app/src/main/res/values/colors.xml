@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBlack">#FF000000</color>
-    <color name="colorWhite">#FFFFFFFF</color>
-    <color name="colorPrimary">#53B175</color>
+    <color name="color_black">#FF000000</color>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_primary">#53B175</color>
+    <color name="color_button">#282828</color>
+
 </resources>

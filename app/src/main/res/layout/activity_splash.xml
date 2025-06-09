@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/color_primary"
     tools:context=".SplashActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +18,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageLogo"
-            android:layout_width="102dp"
-            android:layout_height="102dp"
+            android:layout_width="@dimen/default_image_size_144dp"
+            android:layout_height="@dimen/default_image_size_144dp"
             android:layout_marginStart="4dp"
             android:src="@drawable/ic_app_logo"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="FitKart"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/font_40"
             android:textStyle="bold"
             android:ellipsize="end"
@@ -49,7 +49,7 @@
             android:layout_marginTop="@dimen/margin_2"
             android:maxLines="1"
             android:text="Gym Equipments"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/font_16"
             app:layout_constraintBottom_toBottomOf="@+id/imageLogo"
             app:layout_constraintEnd_toEndOf="parent"
