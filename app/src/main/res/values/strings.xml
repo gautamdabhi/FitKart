@@ -18,5 +18,7 @@
     <string name="str_email">Email</string>
     <string name="str_passsword">Passsword</string>
     <string name="str_textview">Do You Have An Account?</string>
+    <string name="str_SingUp">SingUp</string>
+    <string name="str_create">CreateAcount</string>
 
 </resources>

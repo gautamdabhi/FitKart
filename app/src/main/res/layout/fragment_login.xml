@@ -106,25 +106,30 @@
         android:layout_height="@dimen/default_button"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
         android:layout_marginHorizontal="@dimen/margin_48"
-        android:background="@color/color_primary"
+        android:background="@drawable/curve"
         android:text="@string/str_login"
         android:textColor="@color/color_white"
         android:layout_marginVertical="@dimen/margin_64"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview"
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSingUp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_16"
-        android:layout_marginVertical="@dimen/margin_36"
-        android:text="@string/str_textview"
-        android:textColor="@color/color_black"
-        android:textSize="@dimen/font_18"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textAlignment="center"
+        android:layout_height="@dimen/default_button"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        />
+        android:layout_marginHorizontal="@dimen/margin_48"
+        android:background="@drawable/curve"
+        android:text="@string/str_SingUp"
+        android:textColor="@color/color_white"
+        android:layout_marginVertical="@dimen/margin_14"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/CreateAcount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/str_create"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        tools:layout_editor_absoluteX="42dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
