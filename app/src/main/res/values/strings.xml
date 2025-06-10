@@ -9,5 +9,14 @@
     <string name="str_welcome_to_fitkart">Welcome To FitKart</string>
     <string name="str_on_board_description">The App For Gymnasts</string>
     <string name="str_get_started">Get Started</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_login">Login</string>
+    <string name="str_name">FitKart</string>
+    <string name="str_signin">Sign In</string>
+    <string name="str_enter_your_email_password">Enter Your Email And Password</string>
+    <string name="str_email">Email</string>
+    <string name="str_passsword">Passsword</string>
+    <string name="str_textview">Do You Have An Account?</string>
 
 </resources>
