@@ -20,6 +20,7 @@
     <string name="str_textview">Do You Have An Account?</string>
     <string name="str_SignUp">SignUp</string>
     <string name="str_create">CreateAcount</string>
-    <string name="str_SignUptext">Don`t have an account</string>
+    <string name="str_SignUptext">Do You Have An Account</string>
+    <string name="str_Username">Username</string>
 
 </resources>

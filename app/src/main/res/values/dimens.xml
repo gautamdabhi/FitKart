@@ -6,6 +6,7 @@
     <dimen name="margin_400">400dp</dimen>
     <dimen name="margin_350">350dp</dimen>
     <dimen name="margin_96">96dp</dimen>
+    <dimen name="margin_106">106dp</dimen>
     <dimen name="margin_64">64dp</dimen>
     <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_48">48dp</dimen>
