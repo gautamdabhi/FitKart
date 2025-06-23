@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.login.SignUpFragment">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="@dimen/default_image_size_144dp"
+        android:layout_height="@dimen/default_image_size_144dp"
+        android:src="@drawable/ic_app_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_36"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/logotext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_48"
+        android:layout_marginVertical="@dimen/margin_0"
+        android:text="@string/str_name"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_40"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_48"
+        android:layout_marginVertical="@dimen/margin_64"
+        android:text="@string/str_login"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_24"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textStyle=""
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginVertical="@dimen/margin_36"
+        android:text="@string/str_email"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_18"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleLogin"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:background="@color/color_primary"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="@dimen/margin_8"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleEmail"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitlePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginVertical="@dimen/margin_36"
+        android:text="@string/str_passsword"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_18"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary"
+        android:inputType="numberPassword"
+        android:layout_marginTop="@dimen/margin_8"
+        android:drawableEnd="@drawable/ic_app_logo"
+        android:textColor="@color/color_white"
+        app:layout_constraintTop_toBottomOf="@+id/textTitlePassword"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_button"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        android:layout_marginHorizontal="@dimen/margin_92"
+        android:background="@drawable/curve"
+        android:text="@string/str_login"
+        android:textColor="@color/color_white"
+        android:layout_marginVertical="@dimen/margin_64"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_36"
+        android:layout_marginVertical="@dimen/margin_10"
+        android:text="@string/str_SignUp"
+        android:textColor="@color/color_SingUpcolor"
+        android:textSize="@dimen/font_14"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAlignment="textEnd"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        android:onClick="onMyButtonClick"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleSignuptext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_96"
+        android:layout_marginVertical="@dimen/margin_10"
+        android:text="@string/str_SignUptext"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_14"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAlignment="textEnd"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        />
+
+
+</FrameLayout>
