@@ -1,11 +1,18 @@
 package mrkinfotech.fitkart.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.databinding.FragmentLoginBinding
+import mrkinfotech.fitkart.ui.base.OnBoardingActivity
+import mrkinfotech.fitkart.ui.home.HomeFragment
+import mrkinfotech.fitkart.ui.home.HomeMainActivity
 
 class LoginFragment : Fragment() {
 
@@ -17,5 +24,25 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.buttonLogin.setOnClickListener {
+            val userName = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
+            if (userName == "admin" && password == "123") {
+                startActivity(Intent(requireContext(), HomeMainActivity::class.java))
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Enter valid UaerName & password",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+        }
     }
 }

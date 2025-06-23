@@ -12,7 +12,7 @@ import mrkinfotech.fitkart.databinding.FragmentFirstBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
@@ -33,9 +33,6 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.FirstFragment)
-        }
     }
 
     override fun onDestroyView() {
