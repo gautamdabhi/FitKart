@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textTitlePassword"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonSignUp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_button"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
@@ -151,7 +151,7 @@
         android:maxLines="2"
         android:ellipsize="end"
         android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
         android:onClick="onMyButtonClick"
         />
     <androidx.appcompat.widget.AppCompatTextView
@@ -165,7 +165,7 @@
         android:textSize="@dimen/font_14"
         android:maxLines="2"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
         />
 
 

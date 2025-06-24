@@ -112,22 +112,23 @@
         android:layout_marginVertical="@dimen/margin_64"/>
 
 
-
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleSignup"
+        android:id="@+id/Signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_36"
         android:layout_marginVertical="@dimen/margin_10"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:onClick="onMyButtonClick"
         android:text="@string/str_SignUp"
+        android:textAlignment="textEnd"
         android:textColor="@color/color_SingUpcolor"
         android:textSize="@dimen/font_14"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        android:onClick="onMyButtonClick"
-        />
+        tools:layout_editor_absoluteX="44dp" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleSignuptext"
         android:layout_width="match_parent"

@@ -13,6 +13,7 @@ import mrkinfotech.fitkart.databinding.FragmentLoginBinding
 import mrkinfotech.fitkart.ui.base.OnBoardingActivity
 import mrkinfotech.fitkart.ui.home.HomeFragment
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
+import mrkinfotech.fitkart.ui.utils.PreferenceHelper
 
 class LoginFragment : Fragment() {
 
@@ -31,9 +32,10 @@ class LoginFragment : Fragment() {
 
 
         binding.buttonLogin.setOnClickListener {
-            val userName = binding.editTextEmail.text.toString()
+            val userEmail = binding.editTextEmail.text.toString()
             val password = binding.editTextPassword.text.toString()
-            if (userName == "admin" && password == "123") {
+            if (userEmail == "admin@gmail.com" && password == "123") {
+                PreferenceHelper.setUserEmail(requireContext(),userEmail)
                 startActivity(Intent(requireContext(), HomeMainActivity::class.java))
             } else {
                 Toast.makeText(
@@ -42,7 +44,10 @@ class LoginFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
 
+        binding.Signup.setOnClickListener {
+            findNavController().navigate(R.id.SignUpFragment)
         }
     }
 }

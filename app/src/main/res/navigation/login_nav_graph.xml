@@ -11,18 +11,12 @@
         android:label="@string/home_lable"
         tools:layout="@layout/fragment_login">
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="mrkinfotech.fitkart.ui.home.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/HomeFragment" />
+        android:id="@+id/SignUpFragment"
+        android:name="mrkinfotech.fitkart.ui.login.SignUpFragment"
+        android:label="@string/str_SignUp"
+        tools:layout="@layout/fragment_sign_up">
     </fragment>
 </navigation>

@@ -12,11 +12,5 @@
         tools:layout="@layout/fragment_first">
 
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="mrkinfotech.fitkart.ui.home.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
 
-    </fragment>
 </navigation>

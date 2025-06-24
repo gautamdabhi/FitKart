@@ -6,13 +6,20 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import mrkinfotech.fitkart.R
+import mrkinfotech.fitkart.ui.home.HomeMainActivity
+import mrkinfotech.fitkart.ui.login.LoginActivity
+import mrkinfotech.fitkart.ui.utils.PreferenceHelper
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, OnBoardingActivity::class.java))
+            if (PreferenceHelper.isUserLoggedIn(this)){
+                startActivity(Intent(this, HomeMainActivity::class.java))
+            }else{
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             finish()
         }, 2000)
     }
