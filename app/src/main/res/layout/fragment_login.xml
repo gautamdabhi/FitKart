@@ -68,7 +68,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/default_edit_text_height"
         android:textColor="@color/color_white"
         android:background="@color/color_primary"
         android:inputType="textEmailAddress"
@@ -92,7 +92,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/default_edit_text_height"
         android:background="@color/color_primary"
         android:inputType="numberPassword"
         android:layout_marginTop="@dimen/margin_8"
@@ -112,11 +112,27 @@
         android:layout_marginVertical="@dimen/margin_64"/>
 
 
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTitleSignuptext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_110"
+        android:layout_marginVertical="@dimen/margin_10"
+        android:text="@string/str_SignUptext"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_14"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/Signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_36"
+        android:layout_marginHorizontal="@dimen/margin_80"
         android:layout_marginVertical="@dimen/margin_10"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
@@ -129,20 +145,6 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
         tools:layout_editor_absoluteX="44dp" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textTitleSignuptext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_96"
-        android:layout_marginVertical="@dimen/margin_10"
-        android:text="@string/str_SignUptext"
-        android:textColor="@color/color_black"
-        android:textSize="@dimen/font_14"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textAlignment="textEnd"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        />
 
 
 

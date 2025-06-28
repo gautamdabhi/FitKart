@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import mrkinfotech.fitkart.databinding.ActivityOnBoardingBinding
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
 import mrkinfotech.fitkart.ui.login.LoginActivity
+import mrkinfotech.fitkart.ui.utils.PreferenceHelper
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -18,6 +19,7 @@ private lateinit var binding: ActivityOnBoardingBinding
 
         binding.buttonGetStarted.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            PreferenceHelper.setOnBoarding(this,true)
         }
     }
 }

@@ -5,9 +5,13 @@
     <dimen name="margin_450">450dp</dimen>
     <dimen name="margin_400">400dp</dimen>
     <dimen name="margin_350">350dp</dimen>
+    <dimen name="margin_107">107dp</dimen>
+    <dimen name="margin_110">110dp</dimen>
     <dimen name="margin_96">96dp</dimen>
+    <dimen name="margin_90">90dp</dimen>
     <dimen name="margin_106">106dp</dimen>
     <dimen name="margin_64">64dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
     <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_48">48dp</dimen>
     <dimen name="margin_36">36dp</dimen>

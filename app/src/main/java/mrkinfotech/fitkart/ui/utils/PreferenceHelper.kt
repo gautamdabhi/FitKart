@@ -9,6 +9,7 @@ class PreferenceHelper {
         private const val PREFS_NAME = "FitKart"
         private const val USER_EMAIL = "UserEmail"
         private const val USER_NAME = "UserName"
+        private const val SCREEN_SHOWN = "UserShown"
         private const val KEY_USER_AGE = "userAge"
         private const val KEY_USER_GENDER = "userGender"
         private const val KEY_PROFILE_IMAGE = "profileImage"
@@ -17,6 +18,7 @@ class PreferenceHelper {
         private const val KEY_LAST_LONGITUDE = "last_longitude"
         private const val KEY_LAST_ADDRESS = "last_address"
         private const val VERSION_NAME = "1"
+
 
         fun getSharedPrefs(context: Context): SharedPreferences {
             return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -34,6 +36,14 @@ class PreferenceHelper {
             val userEmail = getUserEmail(context)
             return userEmail != null && userEmail != VERSION_NAME
         }
+
+        fun getOnBoarding(context: Context): Boolean {
+            return getSharedPrefs(context).getBoolean(SCREEN_SHOWN, false)
+        }
+        fun setOnBoarding(context: Context, OnBoarding: Boolean) {
+            getSharedPrefs(context).edit().putBoolean(SCREEN_SHOWN, OnBoarding).commit()
+        }
+
 
         /*fun saveProfileData(context: Context, profile: ProfileData?) {
             getSharedPrefs(context).edit {
