@@ -10,10 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.databinding.FragmentLoginBinding
-import mrkinfotech.fitkart.ui.base.OnBoardingActivity
-import mrkinfotech.fitkart.ui.home.HomeFragment
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
-import mrkinfotech.fitkart.ui.utils.PreferenceHelper
+import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class LoginFragment : Fragment() {
 

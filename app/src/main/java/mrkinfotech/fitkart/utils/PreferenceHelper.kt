@@ -1,8 +1,7 @@
-package mrkinfotech.fitkart.ui.utils
+package mrkinfotech.fitkart.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.core.content.edit
 
 class PreferenceHelper {
     companion object {

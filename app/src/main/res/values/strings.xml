@@ -12,7 +12,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_login">Login</string>
-    <string name="str_name">FitKart</string>
+    <string name="str_name1">FitKart</string>
     <string name="str_signin">Sign In</string>
     <string name="str_enter_your_email_password">Enter Your Email And Password</string>
     <string name="str_email">Email</string>
@@ -22,5 +22,6 @@
     <string name="str_create">CreateAcount</string>
     <string name="str_SignUptext">Don\'t Have An Account</string>
     <string name="str_Username">Username</string>
+    <string name="str_name">Dumble</string>
 
 </resources>

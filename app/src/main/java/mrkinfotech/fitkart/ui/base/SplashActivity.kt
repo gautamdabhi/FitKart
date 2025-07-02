@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
 import mrkinfotech.fitkart.ui.login.LoginActivity
-import mrkinfotech.fitkart.ui.utils.PreferenceHelper
+import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
