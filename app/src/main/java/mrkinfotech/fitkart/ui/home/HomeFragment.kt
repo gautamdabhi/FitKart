@@ -26,27 +26,56 @@ class HomeFragment : Fragment() {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         itemList = ArrayList()
-        itemList.add(Gym("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.indiamart.com%2Fproddetail%2Fexercise-dumble-14628307788.html&psig=AOvVaw1lhjhjx0G0AfZO_A7lCWum&ust=1751402692343000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPDAvc6Bmo4DFQAAAAAdAAAAABAE", dataItemName = "Dumbles"))
-        itemList.add(Gym("https://www.meesho.com/adjustable-resistance-hand-grip-strength-trainer-non-slip-hand-gripper-exerciser-for-forearm-fingers-wrist-workout/p/7grx0d", dataItemName = "Hand Gripper"))
-        itemList.add(Gym("https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.cosco.in%2Fproducts%2Fac-370-treadmill&psig=AOvVaw3DbmIKt7yQ6g-5p-MOptPx&ust=1751402927663000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLj9y72Cmo4DFQAAAAAdAAAAABAK", dataItemName = "Tread Mill"))
-        itemList.add(Gym("https://www.google.com/url?sa=i&url=https%3A%2F%2Ftrainingstation.co.uk%2Fblogs%2Fnews%2Fhow-to-bench-press&psig=AOvVaw0X11vOoSH3caos_fKv21se&ust=1751403110488000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMi6lJeDmo4DFQAAAAAdAAAAABAE", dataItemName = "Bench Press"))
-        itemList.add(Gym("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pro-tecathletics.com%2Fproduct%2Fpremium-jump-rope%2F&psig=AOvVaw3hhaEoUVZUvPD7nhj-U0To&ust=1751403221059000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNjf3MmDmo4DFQAAAAAdAAAAABAE", dataItemName = "Jump Rope"))
+        itemList.add(
+            Gym(
+                "https://toppng.com/uploads/preview/dumble-1156366359489nutkwp7w.png",
+                        dataItemName = "Dumble"
+            )
+        )
+        itemList.add(
+            Gym(
+                "https://www.powermaxfitness.net/uploads/thumb/800_600_1733736318_product_09122024145518.png",
+                        dataItemName = "Treadmill"
+            )
+        )
+        itemList.add(
+            Gym(
+                "https://m.media-amazon.com/images/I/61hX+Gmf-JL._SX679_.jpg",
+                dataItemName = "Air Bike"
+            )
+        )
+
+        itemList.add(
+            Gym(
+                "https://www.powermaxfitness.net/uploads/thumb/800_600_1571289430_product_17102019104710.jpg",
+                dataItemName = "Bench Incline"
+            )
+        )
+
+        itemList.add(
+            Gym(
+                "https://4.imimg.com/data4/EA/RV/MY-8497149/pec-fly-1000x1000.jpg",
+                dataItemName = "Chest Fly Machine"
+            )
+        )
 
         itemAdapter =
             ItemAdapter(
                 requireContext(),
                 itemList,
                 ItemAdapter.OnClickListener { itemData, clickType ->
-
                 })
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = itemAdapter
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        recyclerView.adapter = itemAdapter
 
     }
 

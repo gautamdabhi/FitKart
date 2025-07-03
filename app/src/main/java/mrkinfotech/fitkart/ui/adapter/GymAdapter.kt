@@ -38,6 +38,7 @@ class ItemAdapter(
             binding.itemName1.text = dataModal.dataItemName
             Glide.with(context)
                 .load(dataModal.titleImage)
+                .centerCrop()
                 .placeholder(R.drawable.ic_app_logo)
                 .into(binding.card1)
 
