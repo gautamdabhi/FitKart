@@ -128,5 +128,6 @@
     <dimen name="icon_direction_size_28">28dp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_6">6dp</dimen>
+    <dimen name="default_image_icon_18dp">18</dimen>
 
 </resources>
