@@ -3,4 +3,7 @@
     android:shape="rectangle">
     <solid android:color="@color/color_primary" /> <!-- Button color -->
     <corners android:radius="20dp"/>
+        <shape android:shape="rectangle"/>
+    <solid android:color="@color/color_primary_light" /> <!-- Button color -->
+    <corners android:radius="8dp"/>
 </shape>

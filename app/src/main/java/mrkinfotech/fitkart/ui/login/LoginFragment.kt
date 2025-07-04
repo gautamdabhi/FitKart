@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.databinding.FragmentLoginBinding
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
+import mrkinfotech.fitkart.utils.CustomDialog
 import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class LoginFragment : Fragment() {
@@ -36,16 +37,19 @@ class LoginFragment : Fragment() {
                 PreferenceHelper.setUserEmail(requireContext(),userEmail)
                 startActivity(Intent(requireContext(), HomeMainActivity::class.java))
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Enter valid UaerName & password",
-                    Toast.LENGTH_SHORT
-                ).show()
+                CustomDialog.showToastMessage(requireContext(),"Enter Email And Password")
             }
         }
+
 
         binding.Signup.setOnClickListener {
             findNavController().navigate(R.id.SignUpFragment)
         }
     }
 }
+
+/*Toast.makeText(
+requireContext(),
+"Enter valid UserName & password",
+Toast.LENGTH_SHORT
+).show()*/
