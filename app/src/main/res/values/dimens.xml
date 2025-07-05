@@ -65,7 +65,7 @@
     <dimen name="run_textView_size">48dp</dimen>
 
     <dimen name="default_view_pager_image_size_212">212dp</dimen>
-    <dimen name="default_view_pager_image_size">188dp</dimen>
+    <dimen name="default_view_pager_image_size_188">188dp</dimen>
     <dimen name="default_image_size_144dp">144dp</dimen>
     <dimen name="default_image_size_96dp">96dp</dimen>
     <dimen name="default_image_size_74dp">74dp</dimen>

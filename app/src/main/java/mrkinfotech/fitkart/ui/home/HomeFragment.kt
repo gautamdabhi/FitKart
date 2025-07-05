@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import mrkinfotech.fitkart.databinding.FragmentFirstBinding
+import mrkinfotech.fitkart.ui.adapter.ImageSliderAdapter
 import mrkinfotech.fitkart.ui.adapter.ItemAdapter
 import mrkinfotech.fitkart.ui.data.Gym
 import mrkinfotech.fitkart.utils.MasterDataUtils
+import mrkinfotech.fitkart.utils.MasterDataUtils.viewPagerImage
 
 
 class HomeFragment : Fragment() {
@@ -35,9 +37,7 @@ class HomeFragment : Fragment() {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-
-
+        
 
         itemAdapter =
             ItemAdapter(
@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
                 })
 
         recyclerView.adapter = itemAdapter
-
     }
 
     override fun onDestroyView() {
