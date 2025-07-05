@@ -137,7 +137,6 @@
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:onClick="onMyButtonClick"
         android:text="@string/str_SignUp"
         android:textAlignment="textEnd"
         android:textColor="@color/color_SingUpcolor"

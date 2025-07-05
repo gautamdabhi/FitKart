@@ -12,11 +12,14 @@ import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.databinding.FragmentLoginBinding
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
 import mrkinfotech.fitkart.utils.CustomDialog
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,21 +33,37 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.buttonLogin.setOnClickListener {
-            val userEmail = binding.editTextEmail.text.toString()
-            val password = binding.editTextPassword.text.toString()
-            if (userEmail == "admin@gmail.com" && password == "123") {
-                PreferenceHelper.setUserEmail(requireContext(),userEmail)
-                startActivity(Intent(requireContext(), HomeMainActivity::class.java))
-            } else {
-                CustomDialog.showToastMessage(requireContext(),"Enter Email And Password")
-            }
-        }
-
-
         binding.Signup.setOnClickListener {
             findNavController().navigate(R.id.SignUpFragment)
         }
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
+
+        binding.buttonLogin.setOnClickListener {
+        val email = binding.editTextEmail.text.toString()
+        val pass = binding.editTextPassword.text.toString()
+
+        if (email.isNotEmpty() && pass.isNotEmpty()) {
+            firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    startActivity(Intent(requireContext(), HomeMainActivity::class.java))
+                    PreferenceHelper.setUserEmail(requireContext(),email)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        it.exception.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+            }
+        } else {
+            Toast.makeText(requireContext(), "Empty fields are not allowed", Toast.LENGTH_SHORT)
+                .show()
+
+        }
+    }
     }
 }
 

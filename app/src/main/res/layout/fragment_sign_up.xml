@@ -164,7 +164,6 @@
         android:ellipsize="end"
         android:textAlignment="textEnd"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
-        android:onClick="onMyButtonClick"
         />
 
 
