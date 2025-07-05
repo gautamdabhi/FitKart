@@ -46,8 +46,13 @@ class HomeFragment : Fragment() {
                 ItemAdapter.OnClickListener { itemData, clickType ->
                 })
 
-        recyclerView.adapter = itemAdapter
+        binding.recyclerView.adapter = itemAdapter
+        binding.viewPager.adapter = ImageSliderAdapter(
+            requireContext(), imageList = viewPagerImage()
+        )
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
