@@ -38,7 +38,7 @@ class SignUpFragment : Fragment() {
             if (userName.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()) {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            startActivity(Intent(requireContext(), LoginFragment::class.java))
+                            startActivity(Intent(requireContext(), LoginActivity::class.java))
                         } else {
                             Toast.makeText(
                                 requireContext(),
