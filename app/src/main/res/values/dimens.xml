@@ -105,6 +105,7 @@
     <dimen name="small_coin_size_104dp">104dp</dimen>
     <dimen name="medium_coin_size_124dp">124dp</dimen>
     <dimen name="big_coin_size_158dp">158dp</dimen>
+    <dimen name="big_coin_size_98dp">98dp</dimen>
     <dimen name="image_size_small">40dp</dimen>
     <dimen name="card_elevation_8dp">8dp</dimen>
     <dimen name="card_elevation_4dp">4dp</dimen>
