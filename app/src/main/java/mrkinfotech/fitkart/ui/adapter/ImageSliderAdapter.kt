@@ -12,6 +12,7 @@ import mrkinfotech.fitkart.R
 class ImageSliderAdapter(
     private val context: Context,
     private var imageList: ArrayList<String>,
+    startAutoScroll: Unit,
 ) : PagerAdapter() {
 
     override fun getCount(): Int = imageList.size

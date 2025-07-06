@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewPager: ViewPager
     private var currentPage = 0
     private val handler = android.os.Handler(Looper.getMainLooper())
-    private val delay: Long = 3000 // 3 seconds
+    private val ScrollDelay: Long = 3000
     private var runnable: Runnable? = null
 
 
@@ -55,12 +55,13 @@ class HomeFragment : Fragment() {
                 itemList = MasterDataUtils.getContextlist(requireContext()),
                 ItemAdapter.OnClickListener { itemData, clickType ->
                 })
-        imageSliderAdapter = ImageSliderAdapter(
-            requireContext(), imageList = getviewPagerImage()
-        )
+
 
         binding.recyclerView.adapter = itemAdapter
-        binding.viewPager.adapter = imageSliderAdapter
+        binding.viewPager.adapter = ImageSliderAdapter(
+            requireContext(), imageList = getviewPagerImage(),
+            startAutoScroll()
+        )
     }
 
 
@@ -71,11 +72,11 @@ class HomeFragment : Fragment() {
                     currentPage =
                         (currentPage + 1) % MasterDataUtils.getviewPagerImage().size
                     binding.viewPager.setCurrentItem(currentPage, true)
-                    handler.postDelayed(this, delay)
+                    handler.postDelayed(this, ScrollDelay)
                 }
             }
         }
-        handler.postDelayed(runnable!!, delay)
+        handler.postDelayed(runnable!!, ScrollDelay)
     }
 
 
