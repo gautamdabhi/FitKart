@@ -1,14 +1,13 @@
 package mrkinfotech.fitkart.utils
 
 import android.content.Context
-import mrkinfotech.fitkart.ui.adapter.ImageSliderAdapter
 import mrkinfotech.fitkart.ui.data.Gym
 
 
 
     object MasterDataUtils {
         var itemList = ArrayList<Gym>()
-        fun Contextlist(Context: Context): ArrayList<Gym> {
+        fun getContextlist(Context: Context): ArrayList<Gym> {
             val itemList = ArrayList<Gym>()
             itemList.add(
             Gym(
@@ -46,7 +45,7 @@ import mrkinfotech.fitkart.ui.data.Gym
             return itemList
         }
 
-        fun viewPagerImage() : ArrayList<String> {
+        fun getviewPagerImage() : ArrayList<String> {
 
                 val itemList = ArrayList<String>()
 

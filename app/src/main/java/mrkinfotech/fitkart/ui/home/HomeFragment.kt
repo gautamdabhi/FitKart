@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.postDelayed
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import mrkinfotech.fitkart.databinding.FragmentFirstBinding
@@ -14,14 +13,14 @@ import mrkinfotech.fitkart.ui.adapter.ImageSliderAdapter
 import mrkinfotech.fitkart.ui.adapter.ItemAdapter
 import mrkinfotech.fitkart.ui.data.Gym
 import mrkinfotech.fitkart.utils.MasterDataUtils
-import mrkinfotech.fitkart.utils.MasterDataUtils.viewPagerImage
-import java.util.logging.Handler
+import mrkinfotech.fitkart.utils.MasterDataUtils.getviewPagerImage
 
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var itemAdapter: ItemAdapter
     private lateinit var imageSliderAdapter: ImageSliderAdapter
     private lateinit var itemList: ArrayList<Gym>
@@ -29,14 +28,8 @@ class HomeFragment : Fragment() {
     private var currentPage = 0
     private val handler = android.os.Handler(Looper.getMainLooper())
     private val delay: Long = 3000 // 3 seconds
-    private val runnable: Runnable = object : Runnable {
-        override fun run() {
-            val totalItems = imageSliderAdapter.count
-            currentPage = (currentPage + 1) % totalItems
-            binding.viewPager.setCurrentItem(currentPage, true)
-            handler.postDelayed(this, delay)
-        }
-    }
+    private var runnable: Runnable? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,31 +47,38 @@ class HomeFragment : Fragment() {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        
+
 
         itemAdapter =
             ItemAdapter(
                 requireContext(),
-                itemList = MasterDataUtils.Contextlist(requireContext()),
+                itemList = MasterDataUtils.getContextlist(requireContext()),
                 ItemAdapter.OnClickListener { itemData, clickType ->
                 })
         imageSliderAdapter = ImageSliderAdapter(
-            requireContext(), imageList = viewPagerImage()
+            requireContext(), imageList = getviewPagerImage()
         )
 
         binding.recyclerView.adapter = itemAdapter
         binding.viewPager.adapter = imageSliderAdapter
     }
 
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(runnable, delay)
+
+    private fun startAutoScroll() {
+        runnable = object : Runnable {
+            override fun run() {
+                if (MasterDataUtils.getviewPagerImage().isNotEmpty()) {
+                    currentPage =
+                        (currentPage + 1) % MasterDataUtils.getviewPagerImage().size
+                    binding.viewPager.setCurrentItem(currentPage, true)
+                    handler.postDelayed(this, delay)
+                }
+            }
+        }
+        handler.postDelayed(runnable!!, delay)
     }
 
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(runnable)
-    }
+
 
 
     override fun onDestroyView() {
