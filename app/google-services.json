@@ -12,7 +12,20 @@
           "package_name": "mrkinfotech.fitkart"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "895715965946-chp9chk6srnau3gn7r7sm7qtatqtbfrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mrkinfotech.fitkart",
+            "certificate_hash": "17be7ca337a36b801cd551c75f0718d8b6246d20"
+          }
+        },
+        {
+          "client_id": "895715965946-r1f0ecvpmdlb8n7n3s8kfqj6r31beqh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBKV3mvE9CYDHZjXx8-h4ISsD0H2L03w6k"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895715965946-r1f0ecvpmdlb8n7n3s8kfqj6r31beqh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

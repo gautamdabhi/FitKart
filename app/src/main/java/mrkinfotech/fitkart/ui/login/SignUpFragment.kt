@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import mrkinfotech.fitkart.databinding.FragmentSignUpBinding
+import mrkinfotech.fitkart.utils.CustomDialog
 
 
 class SignUpFragment : Fragment() {
@@ -38,7 +40,8 @@ class SignUpFragment : Fragment() {
             if (userName.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()) {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            startActivity(Intent(requireContext(), LoginActivity::class.java))
+                            CustomDialog.showToastMessage(requireContext(),"User Created SuccessFully")
+                            findNavController().navigateUp()
                         } else {
                             Toast.makeText(
                                 requireContext(),

@@ -27,5 +27,16 @@
     <string name="Cart">Cart</string>
     <string name="Like">Like</string>
     <string name="Account">Account</string>
+    <string name="str_continue_with_google">Continue With Google</string>
+    <string name="str_or">or</string>
+    <string name="str_orders">Orders</string>
+    <string name="str_terms_conditions" translatable="false">Terms &amp; Conditions</string>
+    <string name="str_delivery_address">Delivery Address</string>
+    <string name="str_customer_support">Customer Support</string>
+    <string name="str_help">Help</string>
+    <string name="str_about">About</string>
+    <string name="str_log_out">Log Out</string>
+    <string name="str_exclusiveoffer">Exclusive Offer</string>
+    <string name="str_best_selling">Best Selling</string>
 
 </resources>

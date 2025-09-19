@@ -8,9 +8,26 @@
     <fragment
         android:id="@+id/HomeFragment"
         android:name="mrkinfotech.fitkart.ui.home.HomeFragment"
-        android:label="@string/home_lable"
-        tools:layout="@layout/fragment_first">
+        android:label="@string/Home"
+        tools:layout="@layout/fragment_first"/>
 
-    </fragment>
+    <fragment
+        android:id="@+id/CartFragment"
+        android:name="mrkinfotech.fitkart.ui.cart.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart"/>
+
+    <fragment
+        android:id="@+id/LikeFragment"
+        android:name="mrkinfotech.fitkart.ui.like.LikeFragment"
+        android:label="Like"
+        tools:layout="@layout/fragment_like"/>
+
+    <fragment
+        android:id="@+id/AccountFragment"
+        android:name="mrkinfotech.fitkart.ui.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account"/>
+
 
 </navigation>

@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.ViewPager
 import mrkinfotech.fitkart.databinding.FragmentFirstBinding
 import mrkinfotech.fitkart.ui.adapter.ImageSliderAdapter
 import mrkinfotech.fitkart.ui.adapter.ItemAdapter
-import mrkinfotech.fitkart.ui.data.CommonDataClass
 import mrkinfotech.fitkart.utils.MasterDataUtils
 import mrkinfotech.fitkart.utils.MasterDataUtils.viewPagerImage
 
@@ -21,13 +19,12 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
     private lateinit var itemAdapter: ItemAdapter
-    private lateinit var imageSliderAdapter: ImageSliderAdapter
-    private lateinit var itemList: ArrayList<CommonDataClass>
-    private lateinit var viewPager: ViewPager
+
     private var currentPage = 0
+    private lateinit var imageSliderAdapter: ImageSliderAdapter
     private val handler = android.os.Handler(Looper.getMainLooper())
     private val delay: Long = 4000 // 3 seconds
-    private var ArraySize: Int = 1
+    //private var ArraySize: Int = 1
     private var runnable: Runnable? = null
 
 
@@ -45,7 +42,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = binding.recyclerViewExclusiveoffer
+        val recyclerView = binding.recyclerViewExclusiveOffer
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
@@ -65,7 +62,7 @@ class HomeFragment : Fragment() {
             requireContext(), imageList = viewPagerImage(), startAutoScroll()
         )
 
-        binding.recyclerViewExclusiveoffer.adapter = itemAdapter
+        binding.recyclerViewExclusiveOffer.adapter = itemAdapter
         binding.recyclerViewBestSelling.adapter = itemAdapter
         binding.viewPager.adapter = ImageSliderAdapter(
             requireContext(), imageList = viewPagerImage(),
@@ -77,9 +74,9 @@ class HomeFragment : Fragment() {
     private fun startAutoScroll() {
         runnable = object : Runnable {
             override fun run() {
-                if (MasterDataUtils.viewPagerImage().isNotEmpty()) {
+                if (viewPagerImage().isNotEmpty()) {
                     currentPage =
-                        (currentPage + 1) % MasterDataUtils.viewPagerImage().size
+                        (currentPage + 1) % viewPagerImage().size
                     binding.viewPager.setCurrentItem(currentPage, true)
                     handler.postDelayed(this, delay)
                 }
@@ -88,13 +85,10 @@ class HomeFragment : Fragment() {
         handler.postDelayed(runnable!!, delay)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
 
-    fun main() {
+
+   /* fun main() {
         ArraySize = MasterDataUtils.getCommonList.size
-    }
+    }*/
 }
