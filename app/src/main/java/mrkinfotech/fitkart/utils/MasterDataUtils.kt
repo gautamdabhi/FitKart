@@ -1,78 +1,28 @@
 package mrkinfotech.fitkart.utils
 
-import android.content.Context
-import mrkinfotech.fitkart.ui.data.CommonDataClass
-
+import mrkinfotech.fitkart.models.CommonDataClass
 
 object MasterDataUtils {
-    var getCommonList = ArrayList<CommonDataClass>()
-    fun Contextlist(Context: Context): ArrayList<CommonDataClass> {
+    val cartList = ArrayList<CommonDataClass>()
+    val wishlist = ArrayList<CommonDataClass>()
+
+    // ADD THIS: Temporary storage for the last placed order
+    var lastOrderDetails: Map<String, Any>? = null
+
+    fun getProductList(): ArrayList<CommonDataClass> {
         val itemList = ArrayList<CommonDataClass>()
-        itemList.add(
-            CommonDataClass(
-                "https://toppng.com/uploads/preview/dumble-1156366359489nutkwp7w.png",
-                "Dumble",
-                "1kg dumble",
-                "$90"
-            )
-        )
-
-        itemList.add(
-            CommonDataClass(
-                "https://www.powermaxfitness.net/uploads/thumb/800_600_1733736318_product_09122024145518.png",
-                "Treadmill",
-                "40 speed treadmill",
-                "$200"
-            )
-        )
-        itemList.add(
-            CommonDataClass(
-                "https://m.media-amazon.com/images/I/61hX+Gmf-JL._SX679_.jpg",
-                "Air Bike",
-                "best cycle for Gym",
-                "$150"
-            )
-        )
-
-        itemList.add(
-            CommonDataClass(
-                "https://www.powermaxfitness.net/uploads/thumb/800_600_1571289430_product_17102019104710.jpg",
-                "Bench Incline",
-                "comfatable for gym",
-                "$100"
-            )
-        )
-
-        itemList.add(
-            CommonDataClass(
-                "https://4.imimg.com/data4/EA/RV/MY-8497149/pec-fly-1000x1000.jpg",
-                "Chest Fly Machine",
-                "best",
-                "$70"
-            )
-        )
+        itemList.add(CommonDataClass("1", "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?w=500", "Hex Dumbbell Set", "Professional hex rubber dumbbells", "90.0", "Weights"))
+        itemList.add(CommonDataClass("2", "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=500", "Pro Treadmill", "Electric running machine with incline", "200.0", "Cardio"))
+        itemList.add(CommonDataClass("3", "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=500", "Air Bike", "High-intensity stationary cycle", "150.0", "Cardio"))
+        itemList.add(CommonDataClass("4", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500", "Weight Bench", "Adjustable incline/decline bench", "100.0", "Weights"))
         return itemList
     }
 
-    fun viewPagerImage(): ArrayList<String> {
-
-        val itemList = ArrayList<String>()
-
-        itemList.add("https://www.powermaxfitness.net/uploads/thumb/800_600_1733736318_product_09122024145518.png")
-        itemList.add("https://toppng.com/uploads/preview/dumble-1156366359489nutkwp7w.png")
-        itemList.add("https://m.media-amazon.com/images/I/61hX+Gmf-JL._SX679_.jpg")
-        itemList.add("https://www.powermaxfitness.net/uploads/thumb/800_600_1571289430_product_17102019104710.jpg")
-        itemList.add("https://4.imimg.com/data4/EA/RV/MY-8497149/pec-fly-1000x1000.jpg")
-        return itemList
+    fun getBannerImages(): ArrayList<String> {
+        return arrayListOf(
+            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800",
+            "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800",
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800"
+        )
     }
-
-
 }
-
-
-
-
-
-
-
-

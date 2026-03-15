@@ -2,65 +2,36 @@ package mrkinfotech.fitkart.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import mrkinfotech.fitkart.R
 import mrkinfotech.fitkart.databinding.ActivityMainBinding
-import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.ui.setupWithNavController
-
 
 class HomeMainActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_home_content_main) as NavHostFragment
-        navController = navHostFragment.navController
-
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-
-                R.id.CartFragment,
-                R.id.LikeFragment,
-                R.id.HomeFragment,
-                R.id.AccountFragment
-
-            ),
-        )
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        // FIX: Check if we need to redirect to Cart immediately
+        if (intent.getBooleanExtra("SHOW_CART", false)) {
+            binding.bottomNavigationView.selectedItemId = R.id.CartFragment
+        }
     }
 
-    fun bottomNavigationViewGone(){
-        binding.bottomNavigationView.visibility = View.GONE
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_home_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+    // Handles redirection if the activity is already open
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        if (intent.getBooleanExtra("SHOW_CART", false)) {
+            binding.bottomNavigationView.selectedItemId = R.id.CartFragment
+        }
     }
 }
-
-
-
-
-

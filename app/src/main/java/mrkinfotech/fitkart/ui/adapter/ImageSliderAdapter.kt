@@ -5,38 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.viewpager.widget.PagerAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import mrkinfotech.fitkart.R
 
 class ImageSliderAdapter(
     private val context: Context,
-    private var imageList: ArrayList<String>,
-    startAutoScroll: Unit,
-) : PagerAdapter() {
+    private val imageList: ArrayList<String>
+) : RecyclerView.Adapter<ImageSliderAdapter.ViewHolder>() {
 
-    override fun getCount(): Int = imageList.size
+    // This matches the ID "imageView" in your item_image_slider.xml
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageView: ImageView = view.findViewById(R.id.imageView)
+    }
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean = view === `object`
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_image_slider, parent, false)
+        return ViewHolder(view)
+    }
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val layoutId =
-            R.layout.item_image_slider
-
-        val view = LayoutInflater.from(context).inflate(layoutId, container, false)
-        val ivImage = view.findViewById<ImageView>(R.id.imageView)
-
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // Glide loads the verified URLs from MasterDataUtils
         Glide.with(context)
             .load(imageList[position])
-            .placeholder(R.drawable.warning_icon)
-            .into(ivImage)
-
-        container.addView(view)
-        return view
+            .placeholder(R.drawable.image_warning) // Placeholders prevent blank white screens
+            .error(R.drawable.image_warning)
+            .into(holder.imageView)
     }
 
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as View)
-    }
+    override fun getItemCount(): Int = imageList.size
 }

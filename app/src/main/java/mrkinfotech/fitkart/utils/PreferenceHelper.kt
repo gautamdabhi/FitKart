@@ -3,100 +3,47 @@ package mrkinfotech.fitkart.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferenceHelper {
-    companion object {
-        private const val PREFS_NAME = "FitKart"
-        private const val USER_EMAIL = "UserEmail"
-        private const val USER_NAME = "UserName"
-        private const val SCREEN_SHOWN = "UserShown"
-        private const val KEY_USER_AGE = "userAge"
-        private const val KEY_USER_GENDER = "userGender"
-        private const val KEY_PROFILE_IMAGE = "profileImage"
-        private const val USER_ID = "UserID"
-        private const val KEY_LAST_LATITUDE = "last_latitude"
-        private const val KEY_LAST_LONGITUDE = "last_longitude"
-        private const val KEY_LAST_ADDRESS = "last_address"
-        private const val VERSION_NAME = "1"
+object PreferenceHelper {
+    private const val PREF_NAME = "FitKartPrefs"
+    private const val IS_LOGGED_IN = "isLoggedIn"
+    private const val ONBOARDING_COMPLETE = "onboardingComplete"
 
-
-        fun getSharedPrefs(context: Context): SharedPreferences {
-            return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        }
-
-        fun getUserEmail(context: Context): String? {
-            return getSharedPrefs(context).getString(USER_EMAIL, VERSION_NAME)
-        }
-
-        fun setUserEmail(context: Context, email: String?) {
-            getSharedPrefs(context).edit().putString(USER_EMAIL, email).commit()
-        }
-
-        fun isUserLoggedIn(context: Context): Boolean {
-            val userEmail = getUserEmail(context)
-            return userEmail != null && userEmail != VERSION_NAME
-        }
-
-        fun getOnBoarding(context: Context): Boolean {
-            return getSharedPrefs(context).getBoolean(SCREEN_SHOWN, false)
-        }
-        fun setOnBoarding(context: Context, OnBoarding: Boolean) {
-            getSharedPrefs(context).edit().putBoolean(SCREEN_SHOWN, OnBoarding).commit()
-        }
-
-
-
-        /*fun saveProfileData(context: Context, profile: ProfileData?) {
-            getSharedPrefs(context).edit {
-                putString(USER_EMAIL, profile?.email)
-                putString(USER_NAME, profile?.name)
-                profile?.age?.let { putInt(KEY_USER_AGE, it) }
-                profile?.gender?.let { putString(KEY_USER_GENDER, it) }
-                profile?.imageUri?.let { putString(KEY_PROFILE_IMAGE, it) }
-                profile?.address?.let { putString(KEY_LAST_ADDRESS, it) }
-            }
-        }
-
-        fun getProfileData(context: Context): ProfileData {
-            val prefs = getSharedPrefs(context)
-            return ProfileData(
-                name = prefs.getString(USER_NAME, "") ?: "",
-                email = prefs.getString(USER_EMAIL, "") ?: "",
-                age = try {
-                    prefs.getInt(KEY_USER_AGE, 0)
-                } catch (e: ClassCastException) {
-                    prefs.getString(KEY_USER_AGE, "0")?.toIntOrNull() ?: 0
-                },
-                gender = try {
-                    prefs.getString(KEY_USER_GENDER, null)
-                } catch (e: ClassCastException) {
-                    null
-                }.toString(),
-                imageUri = prefs.getString(KEY_PROFILE_IMAGE, null).toString(),
-                address = prefs.getString(KEY_LAST_ADDRESS, null).toString()
-            )
-        }
-
-        fun setLastLocation(context: Context, locationData: LocationData) {
-            getSharedPrefs(context).edit {
-                putFloat(KEY_LAST_LATITUDE, locationData.latitude.toFloat())
-                putFloat(KEY_LAST_LONGITUDE, locationData.longitude.toFloat())
-            }
-        }
-
-        fun getLastLocation(context: Context): LocationData {
-            val prefs = getSharedPrefs(context)
-            return LocationData(
-                prefs.getFloat(KEY_LAST_LATITUDE, 0f).toDouble(),
-                prefs.getFloat(KEY_LAST_LONGITUDE, 0f).toDouble(),
-            )
-        }
-        */
-
-
-        fun clear(context: Context) {
-            getSharedPrefs(context).edit().clear().commit()
-        }
-
+    private fun getPrefs(context: Context): SharedPreferences {
+        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
+    private fun getEditor(context: Context): SharedPreferences.Editor {
+        return getPrefs(context).edit()
+    }
+
+    fun setOnBoarding(context: Context, isComplete: Boolean) {
+        getEditor(context).putBoolean(ONBOARDING_COMPLETE, isComplete).apply()
+    }
+
+    fun getOnBoarding(context: Context): Boolean {
+        return getPrefs(context).getBoolean(ONBOARDING_COMPLETE, false)
+    }
+
+    fun saveUserSession(context: Context, uid: String, email: String, name: String) {
+        val editor = getEditor(context)
+        editor.putString("userId", uid)
+        editor.putString("userEmail", email)
+        editor.putString("userName", name)
+        editor.putBoolean(IS_LOGGED_IN, true)
+        editor.apply()
+    }
+
+    fun isUserLoggedIn(context: Context): Boolean {
+        return getPrefs(context).getBoolean(IS_LOGGED_IN, false)
+    }
+
+    fun getUserName(context: Context): String = getPrefs(context).getString("userName", "FitKart User") ?: "FitKart User"
+    fun getUserEmail(context: Context): String = getPrefs(context).getString("userEmail", "user@fitkart.com") ?: "user@fitkart.com"
+
+    // FIX: Clear everything including onboarding so we see the Welcome screen again
+    fun clearSession(context: Context) {
+        val editor = getEditor(context)
+        editor.clear() // This wipes ALL flags: login, user details, AND onboarding
+        editor.apply()
+    }
 }

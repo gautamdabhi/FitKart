@@ -2,127 +2,80 @@ package mrkinfotech.fitkart.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin. GoogleSignInClient
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import mrkinfotech.fitkart.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import mrkinfotech.fitkart.databinding.FragmentLoginBinding
 import mrkinfotech.fitkart.ui.home.HomeMainActivity
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import mrkinfotech.fitkart.utils.PreferenceHelper
-import com.google.firebase.auth.GoogleAuthProvider
 import mrkinfotech.fitkart.utils.AppConstant
 import mrkinfotech.fitkart.utils.CustomDialog
+import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var auth: FirebaseAuth
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
     private lateinit var googleSignInClient: GoogleSignInClient
+    private val auth = FirebaseAuth.getInstance()
     private val RC_SIGN_IN = 9001
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        firebaseAuth = FirebaseAuth.getInstance()
-        auth = Firebase.auth
-
-        binding.buttonLogin.setOnClickListener {
-        val email = binding.editTextEmail.text.toString()
-        val pass = binding.editTextPassword.text.toString()
-
-        if (email.isNotEmpty() && pass.isNotEmpty()) {
-            firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    startActivity(Intent(requireContext(), HomeMainActivity::class.java))
-                    PreferenceHelper.setUserEmail(requireContext(),email)
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        it.exception.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }
-            }
-        } else {
-            Toast.makeText(requireContext(), "Empty fields are not allowed", Toast.LENGTH_SHORT)
-                .show()
-
-        }
-    }
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(AppConstant.WEB_CLIENT_ID)
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         binding.buttonContinueWithGoogle.setOnClickListener {
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
-        }
-
-        binding.buttonSignUp.setOnClickListener {
-            findNavController().navigate(R.id.SignUpFragment)
+            // FIX: Sign out first to force the account selector highlight to appear
+            googleSignInClient.signOut().addOnCompleteListener {
+                val signInIntent = googleSignInClient.signInIntent
+                startActivityForResult(signInIntent, RC_SIGN_IN)
+            }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        }
-    }
-
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-            firebaseAuthWithGoogle(account)
-        } catch (e: ApiException) {
-            CustomDialog.showToastMessage(requireActivity(), "Sign-in failed: ${e.message}")
-        }
-    }
-
-    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    CustomDialog.showToastMessage(requireActivity(), "Login Successful")
-                    PreferenceHelper.setUserEmail(requireContext(), account.email)
-                    startActivity(Intent(requireActivity(), HomeMainActivity::class.java))
-                } else {
-                    CustomDialog.showToastMessage(requireActivity(), "Login Failed")
-                }
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                CustomDialog.showToastMessage(requireContext(), "Sign-In Canceled")
             }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val user = auth.currentUser
+                PreferenceHelper.saveUserSession(requireContext(), user?.uid ?: "", user?.email ?: "", user?.displayName ?: "FitKart User")
+                startActivity(Intent(requireContext(), HomeMainActivity::class.java))
+                requireActivity().finish()
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
-
-/*Toast.makeText(
-requireContext(),
-"Enter valid UserName & password",
-Toast.LENGTH_SHORT
-).show()*/

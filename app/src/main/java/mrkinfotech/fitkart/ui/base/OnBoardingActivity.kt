@@ -9,7 +9,7 @@ import mrkinfotech.fitkart.utils.PreferenceHelper
 
 class OnBoardingActivity : AppCompatActivity() {
 
-private lateinit var binding: ActivityOnBoardingBinding
+    private lateinit var binding: ActivityOnBoardingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,10 @@ private lateinit var binding: ActivityOnBoardingBinding
         setContentView(binding.root)
 
         binding.buttonGetStarted.setOnClickListener {
+            // This now resolves correctly using the updated PreferenceHelper
+            PreferenceHelper.setOnBoarding(this, true)
             startActivity(Intent(this, LoginActivity::class.java))
-            PreferenceHelper.setOnBoarding(this,true)
+            finish()
         }
     }
 }

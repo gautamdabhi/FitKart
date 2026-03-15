@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_white"
     android:padding="@dimen/padding_8"
     tools:context=".ui.login.LoginFragment">
@@ -12,149 +12,130 @@
         android:id="@+id/imageLogo"
         android:layout_width="@dimen/default_image_size_144dp"
         android:layout_height="@dimen/default_image_size_144dp"
-        android:src="@drawable/ic_app_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/margin_36"
-        />
+        android:src="@drawable/ic_app_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/logotext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_48"
-        android:layout_marginVertical="@dimen/margin_0"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:text="@string/app_name"
+        android:textAlignment="center"
         android:textColor="@color/color_black"
         android:textSize="@dimen/font_40"
-        android:maxLines="2"
-        android:ellipsize="end"
         android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_48"
-        android:layout_marginVertical="@dimen/margin_64"
+        android:layout_marginTop="@dimen/margin_16"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="@string/str_login"
+        android:textAlignment="center"
         android:textColor="@color/color_black"
         android:textSize="@dimen/font_24"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textStyle=""
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/logotext" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitleEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_16"
-        android:layout_marginVertical="@dimen/margin_36"
+        android:layout_marginTop="@dimen/margin_24"
         android:text="@string/str_email"
         android:textColor="@color/color_black"
         android:textSize="@dimen/font_18"
-        android:maxLines="2"
-        android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleLogin"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textTitleLogin" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_edit_text_height"
-        android:textColor="@color/color_white"
+        android:layout_marginTop="@dimen/margin_8"
         android:background="@color/color_primary"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="@dimen/margin_8"
-        app:layout_constraintTop_toBottomOf="@+id/textTitleEmail"/>
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/color_white"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleEmail" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textTitlePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_16"
-        android:layout_marginVertical="@dimen/margin_36"
+        android:layout_marginTop="@dimen/margin_16"
         android:text="@string/str_passsword"
         android:textColor="@color/color_black"
         android:textSize="@dimen/font_18"
-        android:maxLines="2"
-        android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_edit_text_height"
+        android:layout_marginTop="@dimen/margin_8"
         android:background="@color/color_primary"
         android:inputType="numberPassword"
-        android:layout_marginTop="@dimen/margin_8"
-        android:drawableEnd="@drawable/ic_app_logo"
+        android:paddingHorizontal="12dp"
         android:textColor="@color/color_white"
-        app:layout_constraintTop_toBottomOf="@+id/textTitlePassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/textTitlePassword" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
         android:layout_marginHorizontal="@dimen/margin_92"
+        android:layout_marginTop="@dimen/margin_36"
         android:background="@drawable/curve"
         android:text="@string/str_login"
         android:textColor="@color/color_white"
-        android:layout_marginVertical="@dimen/margin_64"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textOr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/margin_4"
-        android:maxLines="1"
+        android:layout_marginTop="@dimen/margin_8"
         android:text="@string/str_or"
-        android:textAlignment="textStart"
         android:textColor="@color/color_black"
         android:textSize="@dimen/font_16"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonContinueWithGoogle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_button"
-        android:layout_marginTop="@dimen/margin_0"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
         android:layout_marginHorizontal="@dimen/margin_92"
+        android:layout_marginTop="@dimen/margin_8"
         android:background="@drawable/curve"
         android:text="@string/str_continue_with_google"
         android:textColor="@color/color_white"
-        android:layout_marginVertical="@dimen/margin_24"/>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/textOr" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonContinueWithGoogle">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitleSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/margin_0"
-            android:maxLines="1"
             android:text="@string/str_SignUptext"
-            android:textAlignment="textStart"
             android:textColor="@color/color_primary_light"
             android:textSize="@dimen/font_16" />
 
@@ -163,11 +144,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_4"
+            android:text="@string/str_SignUp"
             android:textColor="@color/color_black"
-            android:text="@string/str_SignUp" />
+            android:textStyle="bold" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

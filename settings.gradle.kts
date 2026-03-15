@@ -11,14 +11,16 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
+    // REMOVED the versionCatalogs block.
+    // Gradle 9.0.0+ finds gradle/libs.versions.toml automatically.
 }
 
 rootProject.name = "FitKart"
 include(":app")
- 
