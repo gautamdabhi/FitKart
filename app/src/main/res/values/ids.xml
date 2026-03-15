@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="OrdersFragment" type="id" />
+    <item name="tvSignUpTitle" type="id" />
+    <item name="tvSignUpSubTitle" type="id" />
+    <item name="tilName" type="id" />
+    <item name="etName" type="id" />
+    <item name="tilSignUpEmail" type="id" />
+</resources>
