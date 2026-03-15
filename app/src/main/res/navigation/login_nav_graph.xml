@@ -8,15 +8,23 @@
     <fragment
         android:id="@+id/LoginFragment"
         android:name="mrkinfotech.fitkart.ui.login.LoginFragment"
-        android:label="@string/home_lable"
+        android:label="Login"
         tools:layout="@layout/fragment_login">
-
-
+        <action
+            android:id="@+id/action_LoginFragment_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SignUpFragment"
         android:name="mrkinfotech.fitkart.ui.login.SignUpFragment"
-        android:label="@string/str_SignUp"
+        android:label="Sign Up"
         tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_SignUpFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment"
+            app:popUpTo="@id/SignUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
 </navigation>

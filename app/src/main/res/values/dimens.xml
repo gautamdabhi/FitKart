@@ -114,7 +114,7 @@
     <dimen name="animation_height_200dp">200dp</dimen>
     <dimen name="animation_height_265dp">265dp</dimen>
     <dimen name="width_300dp">300dp</dimen>
-    <dimen name="height_350p">350dp</dimen>
+    <dimen name="height_350dp">350dp</dimen>
     <dimen name="layout_weight_60">60</dimen>
     <dimen name="margin_18">18dp</dimen>
     <dimen name="margin_250">250dp</dimen>
@@ -129,6 +129,6 @@
     <dimen name="icon_direction_size_28">28dp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_6">6dp</dimen>
-    <dimen name="default_image_icon_18dp">18</dimen>
+    <dimen name="default_image_icon_18dp">18dp</dimen>
 
 </resources>
