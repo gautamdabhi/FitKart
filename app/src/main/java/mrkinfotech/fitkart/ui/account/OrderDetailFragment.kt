@@ -22,7 +22,8 @@ class OrderDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val orderId = arguments?.getString("orderId") ?: "N/A"
+        // Unified key: ORDER_ID
+        val orderId = arguments?.getString("ORDER_ID") ?: "N/A"
         val status = arguments?.getString("status") ?: "Completed"
         val total = arguments?.getDouble("totalAmt") ?: 0.0
 

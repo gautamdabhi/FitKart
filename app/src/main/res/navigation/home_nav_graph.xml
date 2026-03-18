@@ -56,9 +56,24 @@
         android:name="mrkinfotech.fitkart.ui.account.AccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_account">
+
         <action
             android:id="@+id/action_AccountFragment_to_OrdersFragment"
             app:destination="@id/OrdersFragment" />
+
+        <action
+            android:id="@+id/action_AccountFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="mrkinfotech.fitkart.ui.account.SettingsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_settings">
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 
     <fragment

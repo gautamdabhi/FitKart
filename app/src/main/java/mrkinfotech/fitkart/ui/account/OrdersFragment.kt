@@ -23,6 +23,11 @@ class OrdersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Back button logic
+        binding.ivBackOrders.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
         val user = FirebaseAuth.getInstance().currentUser
         if (user == null) {
             binding.tvNoOrders.visibility = View.VISIBLE

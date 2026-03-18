@@ -33,7 +33,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
     private lateinit var rippleBackground: RippleBackground
     private var selectedAddress: String? = null
     private var isMapDragged = false
-    private var lastSavedLatLng: LatLng? = null
     private val handler = Handler(Looper.getMainLooper())
 
     private val reverseGeocodeRunnable = Runnable {
@@ -54,16 +53,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // UPDATED: Submit button logic to match static order placement
+        // Handles the selection of the address
         binding.submitLocationButton.setOnClickListener {
-            selectedAddress?.let { address ->
-                // Return RESULT_OK to CartFragment to trigger OrderSuccessFragment navigation
+            if (!selectedAddress.isNullOrEmpty() && selectedAddress != "Unable to get address") {
                 val resultIntent = Intent()
-                resultIntent.putExtra("selected_address", address)
+                // Key must match AccountFragment's receiver exactly
+                resultIntent.putExtra("selected_address", selectedAddress)
                 setResult(RESULT_OK, resultIntent)
                 finish()
-            } ?: run {
-                Toast.makeText(this, "Please select a delivery location", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Please select a valid delivery location", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -78,6 +77,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
             if (reason == GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE) {
                 isMapDragged = true
                 handler.removeCallbacks(reverseGeocodeRunnable)
+                // Stop ripple while moving to look better
+                rippleBackground.stopRippleAnimation()
             }
         }
 
@@ -99,6 +100,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
         if (isMapDragged) {
             handler.postDelayed(reverseGeocodeRunnable, 500)
             isMapDragged = false
+            rippleBackground.startRippleAnimation()
         }
     }
 
@@ -121,6 +123,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
             binding.progressBar.visibility = View.VISIBLE
             binding.smallPin.visibility = View.GONE
 
+            // Geocoding happens in the background
             val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
             if (!addresses.isNullOrEmpty()) {
                 selectedAddress = addresses[0].getAddressLine(0)
@@ -131,6 +134,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraI
         } finally {
             binding.progressBar.visibility = View.GONE
             binding.smallPin.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    googleMap.isMyLocationEnabled = true
+                    getLastKnownLocation()
+                }
+            }
         }
     }
 
